@@ -1,0 +1,19 @@
+name: Node Continous Integration # give your workflow a name
+
+on: # tell your workflow when to run
+  push: # run your workflow whenever there is a new push to
+    branches: [main] # the main branch
+
+jobs: # every workflow should have one or more jobs: a set of commands to run when an event occurs
+  test_push: # give your first job a name
+    runs-on: ubuntu-16.04 # tell your job to run on a certain OS / VM, called a runner
+    steps: # give your job a set of steps or instructions to follow to perform that job.
+      - uses: actions/checkout@v2 # use this action to bring your source code into the current working directory where this job is being run. Allows you to run commands located in your package.json or like if you we're working locally
+      - name: setup-node # optional, give your step a name
+        uses: actions/setup-node@v1 # this allows you setup nodejs on your VM, so it can run node
+        with: # this package can accept certain inputs, like the version number
+          node_version: 12
+      - run: npm ci # from here, you can run the actions you want. We need to install our dependencies. npm ci is the same thing as npm install, except it does a clean install. so, no cache is used.
+      - run: npm test # run your npm test command
+      - run: npm log:events # run your npm build command
+      - run: echo "HELLO WORLD!"
