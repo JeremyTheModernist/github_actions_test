@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo RUNNING A TEST YO",
-    "log:events": "echo ${{ github.events }}",
+    "log:events": "echo LOGGING EVENTS",
     "dev": "nodemon index.js"
   },
   "author": "",
