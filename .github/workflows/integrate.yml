@@ -15,5 +15,5 @@ jobs: # every workflow should have one or more jobs: a set of commands to run wh
           node_version: 12
       - run: npm ci # from here, you can run the actions you want. We need to install our dependencies. npm ci is the same thing as npm install, except it does a clean install. so, no cache is used.
       - run: npm test # run your npm test command
-      - run: npm log:events # run your npm build command
+      - run: npm view # run your npm build command
       - run: echo "HELLO WORLD!"
